@@ -12,7 +12,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     
     var checklist: Checklist!
     
-    
+
     
     func configureTextForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
         
@@ -30,6 +30,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         } else {
             label.text = ""
         }
+        
+        label.textColor = view.tintColor 
     }
 
     
@@ -141,28 +143,30 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-                    // 1
-                    if segue.identifier == "AddItem" {
-                    // 2
-                    let navigationController = segue.destinationViewController as UINavigationController
-                    // 3
-                    let controller = navigationController.topViewController as ItemDetailViewController
-                    // 4
-                    controller.delegate = self
-                    
-                } else if segue.identifier == "EditItem" {
-                    let navigationController = segue.destinationViewController as UINavigationController
-                    let controller = navigationController.topViewController as ItemDetailViewController
-                    
-                    controller.delegate = self
-                    
-                    if let indexPath = tableView.indexPathForCell(sender as UITableViewCell) {
-                        
-                        controller.itemToEdit = checklist.items[indexPath.row]
-                  }
+        // 1
+        if segue.identifier == "AddItem" {
+            // 2
+            let navigationController = segue.destinationViewController as UINavigationController
+            // 3
+            let controller = navigationController.topViewController as ItemDetailViewController
+            // 4
+            controller.delegate = self
+            
+        } else if segue.identifier == "EditItem" {
+            let navigationController = segue.destinationViewController as UINavigationController
+            let controller = navigationController.topViewController as ItemDetailViewController
+            
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPathForCell(sender as UITableViewCell) {
+                
+                controller.itemToEdit = checklist.items[indexPath.row]
+            }
+        }
+        
     }
     
-    }
+   
 
 
     
