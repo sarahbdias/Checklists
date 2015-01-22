@@ -139,18 +139,18 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func addItemViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem) {
-                    if let index = find(checklist.items, item) {
-                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
-                    if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                    configureTextForCell(cell, withChecklistItem: item)
-                        
+//                    if let index = find(checklist.items, item) {
+//                    let indexPath = NSIndexPath(forRow: index, inSection: 0)
+//                    if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//                    configureTextForCell(cell, withChecklistItem: item)
+        
                     
                 checklist.sortChecklistItems()
                 tableView.reloadData()
                    
                     
-                }
-                    }
+//                }
+//                    }
                     dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -171,7 +171,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             controller.delegate = self
             
             if let indexPath = tableView.indexPathForCell(sender as UITableViewCell) {
-                
+            
                 controller.itemToEdit = checklist.items[indexPath.row]
             }
         }

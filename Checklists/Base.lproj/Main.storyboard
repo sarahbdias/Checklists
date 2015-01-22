@@ -350,7 +350,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhT-TY-abi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="393"/>
+            <point key="canvasLocation" x="-283" y="393"/>
         </scene>
         <!--Checklists-->
         <scene sceneID="RH4-Yt-eyi">
@@ -379,7 +379,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYk-bD-ZoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="1117"/>
+            <point key="canvasLocation" x="448" y="411"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S5T-y7-Fx7">
