@@ -11,15 +11,37 @@ import UIKit
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
     var checklist: Checklist!
-    
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.rowHeight = 44
+        title = checklist.name
+//        items = checklist.items
+        checklist.sortChecklistItems()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     func configureTextForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
         
             let label = cell.viewWithTag(1000) as UILabel
-            label.text = item.text
-            
-    }
+            let dateLabel = cell.viewWithTag(1002) as UILabel
+            //label.text = item.text
+        
+        label.text = "\(item.text)"
+       
+        let date = item.dueDate
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .ShortStyle
+        dateLabel.text = formatter.stringFromDate(date)
+        
+    
+}
     
     func configureCheckmarkForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
         
@@ -32,19 +54,6 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
         
         label.textColor = view.tintColor 
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.rowHeight = 44
-        title = checklist.name
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -134,7 +143,10 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
                     let indexPath = NSIndexPath(forRow: index, inSection: 0)
                     if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                     configureTextForCell(cell, withChecklistItem: item)
+                        
                     
+                checklist.sortChecklistItems()
+                tableView.reloadData()
                    
                     
                 }
